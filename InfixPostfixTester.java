@@ -1,18 +1,24 @@
-Public Class InfixPostfixTester
+import java.util.Scanner;
+public class InfixPostfixTester
 {
-    Public static void main(String [] args)
+    public static void main(String [] args)
     {
         Scanner scan = new Scanner(System.in);
-        CharStack stack = new CharStack();
+        CharStack stack = new CharStack(); //UNSURE OF WHY THIS IS AN ISSUE
         String output = "";
         
         System.out.print("Please enter infix notation: ");
         String input = scan.nextLine();
         
         
-        for (int i = 0; i< input.length; i++;)
+        for(int i = 0; i< input.length(); i++)
         {
-            if(input.charAt(i) == '('')
+            char currentChar = input.charAt(i);
+            System.out.print(currentChar);
+           
+            
+            /*String s = input.charAt(i);
+            if(s == '(')
             {
                 //take it and put it in the stack
                 stack.push(charAt(i));
@@ -21,7 +27,7 @@ Public Class InfixPostfixTester
             else if (input.charAt(i) == ')')
             {
                 //pop operator out into output
-                output = output + " " +(stack.pop(charAt(i))).toString;
+                output = output + " " +(stack.pop()).toString;
                 
                 //get rid of left paren in stack               
                 stack.pop();
@@ -35,7 +41,7 @@ Public Class InfixPostfixTester
             {
                 //write number to output
                 output = output + " " + charAt(i).toString;
-            }
+            }*/
         }
     }//main
 }//class
