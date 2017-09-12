@@ -14,34 +14,42 @@ public class InfixPostfixTester
         for(int i = 0; i< input.length(); i++)
         {
             char currentChar = input.charAt(i);
-            System.out.print(currentChar);
-           
-            
-            /*String s = input.charAt(i);
-            if(s == '(')
+
+            if (isOperator(currentChar))
             {
-                //take it and put it in the stack
-                stack.push(charAt(i));
+                output += currentChar;
             }
             
-            else if (input.charAt(i) == ')')
+            else if(isOperator(currentChar))
             {
-                //pop operator out into output
-                output = output + " " +(stack.pop()).toString;
+                //pop any operators with higher precidence before continuing. 
                 
-                //get rid of left paren in stack               
-                stack.pop();
+                while (precedenceOrder(currentChar) < precedenceOrder(stack.peek()) || precedenceOrder(currentChar) == precedenceOrder(stack.peek()))
+                {
+                    char temp = stack.pop();
+                    output = output + temp; 
+                }//check for operators with a higher or equal precedence and pop them to output.
+                
+                stack.push(currentChar);  //End goal for each
             }
-            else if (input.charAt(i) == '+' || input.charAt(i) == '-' || input.charAt(i) == '*' || input.charAt(i) == '/' || input.charAt(i) == '%')
+            
+            else if(currentChar == ')')
             {
-                //put it in stack to wait until operand2 is printed <--THEN WHAT???
-                push(charAt(i));
+                char temp = stack.peek();
+                while(temp != '(');
+                {
+                    temp = stack.pop();
+                    output = output + temp;
+                    
+                }
             }
-            else //number
+            
+            else if(currentChar == '(')
             {
-                //write number to output
-                output = output + " " + charAt(i).toString;
-            }*/
+                stack.push(currentChar);
+            }
+            
         }
+        System.out.print(output);    
     }//main
 }//class

@@ -1,4 +1,4 @@
-public class InfixPostfix
+public class CharStack
 {
   private final int MAX_CAP = 100;
   private int top; //location of top item on the stack
@@ -73,5 +73,42 @@ public class InfixPostfix
       }
       
       return result;
+  } 
+  public static boolean isOperand(char c)
+   {
+    if(
+      (c>='a' && c<='z') ||
+      (c>='A' && c<='Z') ||
+      (c>='0' && c<='9')){
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+  public static boolean isOperator(char c)
+  {
+    if (c=='+' || c=='-' || c=='*' || c=='/')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }  
   }
+  
+  public static int precedenceOrder(char c)
+  {
+    if(c == '*' || c == '/' )
+    {
+      return 2;
+    }
+    else 
+    {
+      return 1;
+    }
+  }  
 }//class
